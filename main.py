@@ -1,16 +1,26 @@
-# This is a sample Python script.
+import sys
+from ftplib import FTP
+import ftpcom
+import react
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+ftp = FTP()
+
+path = sys.argv[1]
+host = sys.argv[2]
+port = sys.argv[3]
+user = sys.argv[4]
+pwd = sys.argv[5]
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def run_program():
+    print('I start to build your react app')
+    react.build_react(path)
+    print('react built complete')
+    ftpcom.ftp_connect(ftp, host, port, user, pwd)
+    ftpcom.ftp_remove_dir(ftp, 'static')
+    ftpcom.ftp_upload(ftp, path + '\\build')
+    ftp.quit()
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    run_program()
