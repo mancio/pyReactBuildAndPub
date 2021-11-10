@@ -1,26 +1,23 @@
 import sys
 from ftplib import FTP
+
+import argumets
 import ftpcom
 import react
 
 ftp = FTP()
 
-path = sys.argv[1]
-host = sys.argv[2]
-port = int(sys.argv[3])
-user = sys.argv[4]
-pwd = sys.argv[5]
-
 
 def run_program():
+    par = argumets.argument_builder(sys.argv[1:])
     print('I start to build your react app')
-    react.build_react(path)
-    print('connect to: ' + host)
-    ftpcom.ftp_connect(ftp, host, port, user, pwd)
+    react.build_react(par["path"])
+    print('connect to: ' + par["host"])
+    ftpcom.ftp_connect(ftp, par["host"], par["port"], par["user"], par["pass"])
     print('remove static folder')
     ftpcom.ftp_remove_dir(ftp, 'static')
     print('upload files')
-    ftpcom.ftp_upload(ftp, path + '\\build')
+    ftpcom.ftp_upload(ftp, par["path"] + '\\build')
     ftp.quit()
 
 
