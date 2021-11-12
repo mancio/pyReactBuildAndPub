@@ -1,10 +1,7 @@
 import getopt
-import sys
 
 
 def argument_builder(args):
-    # Remove 1st argument from the
-    # list of command line arguments
     argumentList = args
 
     par = {
@@ -14,12 +11,6 @@ def argument_builder(args):
         "user": "",
         "pass": ""
     }
-
-    # path = sys.argv[1]
-    # host = sys.argv[2]
-    # port = int(sys.argv[3])
-    # user = sys.argv[4]
-    # pwd = sys.argv[5]
 
     # Options
     options = "hP:o:p:s:w:"
