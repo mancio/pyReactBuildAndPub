@@ -34,23 +34,23 @@ def argument_builder(args):
 
             elif currentArgument in ("-P", "--path"):
                 par["path"] = currentValue
-                print(par["path"])
+                print('path: ' + par["path"])
 
             elif currentArgument in ("-o", "--host"):
                 par["host"] = currentValue
-                print(par["host"])
+                print('host: ' + par["host"])
 
             elif currentArgument in ("-p", "--port"):
                 par["port"] = int(currentValue)
-                print(par["port"])
+                print('port: ' + par["port"])
 
             elif currentArgument in ("-s", "--user"):
                 par["user"] = currentValue
-                print(par["user"])
+                print('user: ' + par["user"])
 
             elif currentArgument in ("-w", "--pass"):
                 par["pass"] = currentValue
-                print(par["pass"])
+                print('pass: ******')
 
     except getopt.error as err:
         # output error, and return with an error code
