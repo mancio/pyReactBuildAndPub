@@ -42,7 +42,7 @@ def argument_builder(args):
 
             elif currentArgument in ("-p", "--port"):
                 par["port"] = int(currentValue)
-                print('port: ' + par["port"])
+                print('port: ' + currentValue)
 
             elif currentArgument in ("-s", "--user"):
                 par["user"] = currentValue
